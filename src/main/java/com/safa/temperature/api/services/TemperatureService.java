@@ -27,5 +27,13 @@ public class TemperatureService {
 	   return response;
 	   
    }
+   public TemperatureResponse avg(TemperatureRequest request) {
+	   TemperatureResponse response = new TemperatureResponse();
+	   int tab[] = request.getTemperatures();
+	   int average = (int)Arrays.stream(tab).average().getAsDouble();
+	   response.setResTemp(average);
+	   return response;
+	  }
+   }
 
-}
+
