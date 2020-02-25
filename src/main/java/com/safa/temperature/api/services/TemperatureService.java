@@ -1,11 +1,11 @@
-package com.safa.temperature.api.ws.services;
+package com.safa.temperature.api.services;
 
 import java.util.Arrays;
 
 import org.springframework.stereotype.Service;
 
-import com.safa.temperature.api.ws.payload.requests.TemperatureRequest;
-import com.safa.temperature.api.ws.payload.responses.TemperatureResponse;
+import com.safa.temperature.api.payload.requests.TemperatureRequest;
+import com.safa.temperature.api.payload.responses.TemperatureResponse;
 
 @Service
 public class TemperatureService {
@@ -13,7 +13,7 @@ public class TemperatureService {
    public TemperatureResponse min(TemperatureRequest request) {
 	   
 	   TemperatureResponse response = new TemperatureResponse();
-	   int tab[] = request.getTemperature(); 
+	   int tab[] = request.getTemperatures(); 
 	    Arrays.sort(tab);
 	   response.setResTemp(tab[0]);
 	   return response;

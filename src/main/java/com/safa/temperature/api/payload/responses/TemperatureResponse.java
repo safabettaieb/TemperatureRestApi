@@ -1,4 +1,4 @@
-package com.safa.temperature.api.ws.payload.responses;
+package com.safa.temperature.api.payload.responses;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.safa.temperature.api.ws;
+package com.safa.temperature.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
