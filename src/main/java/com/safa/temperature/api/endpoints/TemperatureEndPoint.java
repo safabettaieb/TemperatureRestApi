@@ -18,8 +18,12 @@ public class TemperatureEndPoint {
 	
 	@PostMapping("/min")
 	public TemperatureResponse getMinTemperature(@RequestBody TemperatureRequest request) {
-		return service.min(request);
+		return service.min(request);}
 		
-	}
+	
+	@PostMapping("/max")
+	public TemperatureResponse getMaxTemperature(@RequestBody TemperatureRequest request) {
+		return service.max(request);}
+	
 
 }
