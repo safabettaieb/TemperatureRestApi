@@ -1,6 +1,8 @@
 package com.safa.temperature.api.services;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -37,27 +39,32 @@ public class TemperatureService {
 		return response;
 	}
 
-	public TemperatureResponse closetToZero(TemperatureRequest request) {
+	public TemperatureResponse closestToZero(TemperatureRequest request) {
 		
 		TemperatureResponse response = new TemperatureResponse();
 		int tab[] = request.getTemperatures();
 		Arrays.sort(tab);
+		for(int j = 0;j<tab.length;j++)
+			System.out.println(tab[j]);
 
 		int pre=0, post=0, i = 0;
 		boolean verif = false;
 		
-		while (i < tab.length && verif) {
+		while (i < tab.length && !verif) {
+			System.out.println("test");
 			if (tab[i] == 0) {
 				pre = tab[i - 1];
 				post = tab[i + 1];
+				verif = true;
 			} else {
 				i++;
 			}
 		}
+		
 		if (pre < 0) {
-			response.setResTemp(tab[post]);
+			response.setResTemp(post);		
 		} else {
-			response.setResTemp(tab[pre]);
+			response.setResTemp(pre);
 		}
 		return response;
 

@@ -14,19 +14,26 @@ import com.safa.temperature.api.services.TemperatureService;
 @RequestMapping("/api/temperatures")
 public class TemperatureEndPoint {
 	@Autowired
-	private TemperatureService service ;
-	
+	private TemperatureService service;
+
 	@PostMapping("/min")
 	public TemperatureResponse getMinTemperature(@RequestBody TemperatureRequest request) {
-		return service.min(request);}
-		
-	
+		return service.min(request);
+	}
+
 	@PostMapping("/max")
 	public TemperatureResponse getMaxTemperature(@RequestBody TemperatureRequest request) {
-		return service.max(request);}
-	
+		return service.max(request);
+	}
+
 	@PostMapping("/avg")
 	public TemperatureResponse getAvgTemperature(@RequestBody TemperatureRequest request) {
-		return service.avg(request);}
+		return service.avg(request);
+	}
+
+	@PostMapping("/closest-to-zero")
+	public TemperatureResponse getClosestToZeroTemperature(@RequestBody TemperatureRequest request) {
+		return service.closestToZero(request);
+	}
 
 }
