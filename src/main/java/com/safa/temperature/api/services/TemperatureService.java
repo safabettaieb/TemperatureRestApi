@@ -19,5 +19,13 @@ public class TemperatureService {
 	   return response;
    
    }
+   public TemperatureResponse max(TemperatureRequest request) {
+	   TemperatureResponse response = new TemperatureResponse();
+	   int tab[] = request.getTemperatures();
+	   Arrays.sort(tab);
+	   response.setResTemp(tab[tab.length-1]);
+	   return response;
+	   
+   }
 
 }
