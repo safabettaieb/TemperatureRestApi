@@ -1,6 +1,10 @@
 package com.safa.temperature.api.services;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -38,21 +42,21 @@ public class TemperatureService {
 	}
 
 	public TemperatureResponse closestToZero(TemperatureRequest request) {
-		
+
 		TemperatureResponse response = new TemperatureResponse();
 		int tab[] = request.getTemperatures();
-		Arrays.sort(tab);
-		for(int j = 0;j<tab.length;j++)
-			System.out.println(tab[j]);
-
+		List<Integer> liste  = Arrays.stream(tab)
+				                         .boxed()
+			                             .collect(Collectors.toList());
+		 liste.add(0);
+		 liste.sort(Comparator.naturalOrder());
 		int pre=0, post=0, i = 0;
 		boolean verif = false;
 		
-		while (i < tab.length && !verif) {
-			System.out.println("test");
-			if (tab[i] == 0) {
-				pre = tab[i - 1];
-				post = tab[i + 1];
+		while (i < liste.size() && !verif) {
+			if (liste.get(i) == 0) {
+				pre = liste.get(i - 1);
+				post = liste.get(i + 1);
 				verif = true;
 			} else {
 				i++;
